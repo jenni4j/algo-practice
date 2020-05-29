@@ -118,27 +118,22 @@ class Graph(object):
     def bfs(self, start_node_num):
         node = self.find_node(start_node_num)
         self._clear_visited()
-        ret_list = [node.value]
-        node.visited = True
-        
-        child_edges = [edge for edge in node.edges if edge.node_to.value != node.value]
-        child_nodes = []
-        for edge in child_edges:
-            if edge.node_to.visited == False:
-                child_nodes = child_nodes + [edge.node_to]
+        ret_list = []
+        child_nodes = [node]
 
         while child_nodes != []:
             curr_node = child_nodes.pop(0)
+            if curr_node.visited == True:
+                continue
             curr_node.visited = True
-            ret_list = ret_list+[curr_node.value]
+            ret_list.append(curr_node.value)
             next_edges = [edge for edge in curr_node.edges if edge.node_to.value != curr_node.value]
             next_nodes = []
             for edge in next_edges:
                 if edge.node_to.visited == False:
-                    next_nodes = next_nodes + [edge.node_to]
+                    next_nodes.append(edge.node_to)
             if next_nodes != []:
                 child_nodes = child_nodes + next_nodes
-            child_nodes = child_nodes[1:]
         return ret_list
 
     def bfs_names(self, start_node_num):
