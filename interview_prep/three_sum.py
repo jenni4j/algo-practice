@@ -12,18 +12,16 @@ def three_sum(nums: List[int]) -> List[List[int]]:
 		right = len(nums) - 1
 
 		while left < right:
-			if a + nums[left] + nums[right] == 0:
-				res.append([a, nums[left], nums[right]])
-				left += 1
+			three_sum = a + nums[left] + nums[right]
+			if three_sum > 0:
 				right -= 1
-				while nums[left] == nums[left - 1]:
-					left += 1
-				while nums[right] == nums[right + 1]:
-					right -= 1
-			elif a + nums[left] + nums[right] < 0:
+			elif three_sum < 0:
 				left += 1
 			else:
-				right -= 1
+				res.append([a, nums[left], nums[right]])
+				left += 1
+				while nums[left] == nums[left - 1] and left < right:
+					left += 1
 
 	return res
 
