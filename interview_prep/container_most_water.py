@@ -1,0 +1,22 @@
+from typing import List
+
+def container_max(height: List[int]) -> int:
+    max_area = 0
+    for i in range(0, len(height) - 1):
+        for j in range(i + 1, len(height)):
+            left = i
+            right = j 
+            if height[left] <= height[right]:
+                max_height = height[left]
+            else:
+                max_height = height[right]
+            width = j - i
+            curr_area = max_height * width
+            if  curr_area > max_area:
+                max_area = curr_area
+
+    return max_area
+
+if __name__ == '__main__':
+    res = container_max([1,8,6,2,5,4,8,3,7])
+    print(res)
