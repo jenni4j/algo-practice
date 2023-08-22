@@ -1,10 +1,3 @@
-
-# [1, 3, 2, 3, 1]
-# [1, 3, 2, 1, 3]
-# [1, 3, 2, 4]
-# [4, 2, 3, 1]
-# []
-
 from typing import List
 
 def index_finder(nums: List[int]) -> int:
