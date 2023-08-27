@@ -41,28 +41,24 @@ def longest_substring_init(s: str) -> int:
 
     
 def longest_substring(s: str) -> int:
-    letter_bank = {}
+    letter_map = {}
     left = 0
     right = 0
     curr_distance = 0
     longest_distance = 0
     
-
     while right < len(s):     
-        if letter_bank.get(s[right]) != 1:
-            letter_bank[s[right]] = 1
+        if s[right] not in letter_map:
+            letter_map[s[right]] = 0
             right += 1
             curr_distance += 1
-            if longest_distance < curr_distance:
+            if curr_distance > longest_distance:
                 longest_distance = curr_distance
-            
         else:
-            #abca
-            letter_bank[s[left]] = 0
+            letter_map.pop(s[left])
             left += 1
             curr_distance -= 1
             
-
     return longest_distance
 
 
@@ -80,5 +76,5 @@ if __name__ == '__main__':
 
     assert longest_substring('contiguous') ==  7, f"longest_substring('contiguous') == 7, found {longest_substring('contiguous')=}"
     
-    assert longest_substring('haagen-dazs') ==  9, f"longest_substring('haagen-dazs') == 9, found {longest_substring('haagen-dazs')=}"
+    assert longest_substring('haagen-dazs') ==  8, f"longest_substring('haagen-dazs') == 9, found {longest_substring('haagen-dazs')=}"
     assert longest_substring('cnotiguous') ==  7, f"longest_substring('contiguous') == 7, found {longest_substring('contiguous')=}"
