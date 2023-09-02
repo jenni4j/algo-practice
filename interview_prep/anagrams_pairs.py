@@ -17,7 +17,6 @@ def anagram_pairs(k: int, strings: List[str]) -> List[int]:
                     s_map[curr_substring] = 1
                 else:
                     s_map[curr_substring] += 1
-        print(s_map)
         for item in s_map:
             if s_map[item] > 1:
                 result[a] += 1
