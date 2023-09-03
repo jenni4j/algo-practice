@@ -17,9 +17,11 @@ def anagram_pairs(k: int, strings: List[str]) -> List[int]:
                     s_map[curr_substring] = 1
                 else:
                     s_map[curr_substring] += 1
+        print(s_map)
         res = 0
         for item in s_map:
             c = s_map[item]
+            # https://www.reddit.com/r/learnmath/comments/3bg21t/what_exactly_is_n_choose_2_in_probability/
             res += (c * (c - 1)) // 2
     
         result[a] = res
@@ -28,7 +30,7 @@ def anagram_pairs(k: int, strings: List[str]) -> List[int]:
                 
 
 if __name__ == '__main__':
-    res = anagram_pairs(1, ['abba'])
+    res = anagram_pairs(1, ['kkk'])
     print(res)
 
 
