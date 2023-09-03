@@ -17,14 +17,18 @@ def anagram_pairs(k: int, strings: List[str]) -> List[int]:
                     s_map[curr_substring] = 1
                 else:
                     s_map[curr_substring] += 1
+        res = 0
         for item in s_map:
-            if s_map[item] > 1:
-                result[a] += 1
+            c = s_map[item]
+            res += (c * (c - 1)) // 2
+    
+        result[a] = res
+
     return result
                 
 
 if __name__ == '__main__':
-    res = anagram_pairs(1, ['kkk'])
+    res = anagram_pairs(1, ['abba'])
     print(res)
 
 
