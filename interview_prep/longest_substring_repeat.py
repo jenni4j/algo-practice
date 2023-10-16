@@ -5,6 +5,7 @@ def longest_substring(s: str, k: int) -> int:
 
     for r in range(len(s)):
         letter_count[s[r]] = 1 + letter_count.get(s[r], 0)
+        # maxf = max(maxf, letter_count[s[r]])
 
         while (r - l + 1) - max(letter_count.values()) > k:
             letter_count[s[l]] -= 1
